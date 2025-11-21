@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adesivos - AS INFORMATICA</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./style.css">
+    <script src="./auth.js" defer></script>
+    <script src="./products.js" defer></script>
+    <script src="./script.js" defer></script>
+    <script src="./admin.js" defer></script>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="./index.html" class="logo">AS INFORMATICA</a>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Destaques</a></li>
+                <li><a href="#containerprodutos">Produtos</a></li>
+                <li><a href="#contact">Contato</a></li>
+                <li><a href="./favoritos.html">Favoritos</a></li>
+                <li><a href="#" id="admin-btn" style="display: none;">ADMIN</a></li>
+                <li><a href="#" id="logout-btn">SAIR</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <video class="hero-video" autoplay muted loop>
+            <source src="https://media.istockphoto.com/id/1154642294/pt/vídeo/industrial-printing-device-at-workshop-view.mp4?s=mp4-640x640-is&k=20&c=_ZVPT9ozR_3jPR0QU912mqswppqw1B4G97FcsKTD7jM=" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>AS INFORMATICA</h1>
+            <p>Adesivos de Alta Qualidade</p>
+            <a href="#products" class="cta-button">VER COLEÇÃO</a>
+        </div>
+    </section>
+
+    <section class="products-section" id="products">
+        <h2 class="section-title">Top 10 Mais Curtidos</h2>
+        <div class="carousel-container">
+            <div class="carousel-wrapper" id="carousel"></div>
+            <button class="carousel-btn prev" id="prevBtn">❮</button>
+            <button class="carousel-btn next" id="nextBtn">❯</button>
+            <div class="indicators" id="indicators"></div>
+        </div>
+    </section>
+
+    <section class="products-section">
+        <h2 class="section-title" id="containerprodutos">Todos os Produtos</h2>
+        <div class="containerprodutos">
+            <div class="prod1">
+                <img src="placapvccomcoberturadeacm.png" alt="">
+                <h3>Placa iluminada</h3>
+                <h4>Placa de PVC com cobertura de acm e iluminação de led</h4>
+            </div>
+                        <div class="prod1">
+                <img src="fachadaacm.png" alt="">
+                <h3>Fachada</h3>
+                <h4>fachada feita em acm com placa de acm rasgado</h4>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <p>&copy; 2025 AS INFORMATICA. Todos os direitos reservados.</p>
+        <div class="social-links">
+            <a href="#">📧</a>
+            <a href="#">📷</a>
+            <a href="#">🐦</a>
+            <a href="#">▶️</a>
+        </div>
+    </footer>
+
+    <audio id="meuAudio" autoplay loop>
+        <source src="rainy-lofi-city-lofi-music-332746.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="audio-control" title="Controlar áudio">
+        <svg id="icon-play" class="icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg id="icon-pause" class="icon hidden" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>
+    </button>
+<!-- BOTÃO SUPORTE -->
+<button id="support-btn" title="Suporte" style="position: fixed; bottom: 80px; right: 20px; background: #00ff00; border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; z-index: 9999;">
+    <span style="font-size: 24px;">💬</span>
+</button>
+
+<!-- MODAL SUPORTE -->
+<div id="support-modal" style="display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); align-items: center; justify-content: center;">
+    <div style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); padding: 30px; border: 1px solid rgba(0, 212, 255, 0.5); border-radius: 15px; max-width: 400px; text-align: center;">
+        <span id="close-support" style="color: #ff00ff; float: right; font-size: 28px; cursor: pointer;">&times;</span>
+        <h3 style="color: #00d4ff; margin-bottom: 20px;">Suporte</h3>
+        <img src="./whattsappQR.png" alt="QR WhatsApp" style="width: 200px; margin: 20px auto; border-radius: 30px; border: 2px solid #00d4ff;" onerror="this.src='https://via.placeholder.com/200x200?text=QR+Code'">
+        <p style="color: #fff;">Entre em contato com o suporte<br>
+        <strong style="color: #ff00ff;">[Não possuímos um chat específico para o suporte, no entanto use o de placas e fachadas]</strong></p>
+    </div>
+</div>
+
+<!-- SCRIPT SUPORTE -->
+<script>
+    const supportBtn = document.getElementById('support-btn');
+    const supportModal = document.getElementById('support-modal');
+    const closeSupport = document.getElementById('close-support');
+
+    supportBtn.onclick = () => supportModal.style.display = 'flex';
+    closeSupport.onclick = () => supportModal.style.display = 'none';
+    supportModal.onclick = (e) => {
+        if (e.target === supportModal) supportModal.style.display = 'none';
+    };
+</script>
+
+</body>
+</html>
