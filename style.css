@@ -524,6 +524,7 @@ footer {
     background: #00d4ff;
     color: #ff00ff;
     transform: scale(1.1);
+    transform: translateX(-50%);
 }
 
 #audio-control:active {
@@ -815,4 +816,5 @@ footer {
 
 .liked .like-icon {
   color: red; /* cor quando curtido */
+
 }
