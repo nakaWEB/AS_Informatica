@@ -52,8 +52,8 @@ nav {
     top: 0;
     width: 100%;
     padding: 20px 50px;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.164);
+    backdrop-filter: blur(2px);
     z-index: 1000;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
@@ -61,7 +61,8 @@ nav {
 
 nav.scrolled {
     padding: 15px 50px;
-    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(2px);
+    background: rgba(0, 0, 0, 0.164);
 }
 
 .nav-container {
@@ -124,12 +125,26 @@ nav.scrolled {
 }
 
 .hero-video {
-    border: solid 1px #ff00ff;
-    position: absolute;
-    top: 10%;
+    position: fixed;
+    top: 0%;
     left: 0;
     width: 100%;
-    height: 90%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+nav.scrolled ~ .hero .hero-video {
+    opacity: 0%;
+    transition: opacity 0.4s ease;
+}
+
+.hero-videoset {
+    position: fixed;
+    top: 0%;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     z-index: -1;
     opacity: 0.7;
@@ -212,7 +227,7 @@ nav.scrolled {
 }
 
 .slide img {
-    width: 900px;
+    width: 100%;
     height: 450px;
     object-fit: cover;
     display: block;
@@ -356,14 +371,14 @@ nav.scrolled {
 
 /* SEÇÃO DE PRODUTOS - VERSÃO 2 */
 .products {
-    padding: 100px 50px;
+    padding: 10px 50px;
     max-width: 1400px;
     margin: 0 auto;
 }
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 30px;
     margin-top: 50px;
 }
@@ -414,8 +429,8 @@ nav.scrolled {
 
 /* SEÇÃO DE DESIGNERS */
 .designers {
-    padding: 100px 50px;
-    background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+    padding: 50px 2px;
+    background: rgba(0, 0, 0, 0);
 }
 
 .designers-container {
@@ -425,7 +440,7 @@ nav.scrolled {
 
 .designer-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 40px;
     margin-top: 50px;
 }
@@ -442,7 +457,7 @@ nav.scrolled {
 .designer-avatar {
     width: 150px;
     height: 150px;
-    border-radius: 50%;
+    border-radius: 20px;
     margin: 0 auto 20px;
     border: 3px solid #00d4ff;
     transition: border-color 0.3s;
@@ -454,10 +469,15 @@ nav.scrolled {
 
 /* FOOTER */
 footer {
+    position: fixed;
+    top: 92%;
+    height: 8%;
+    width: 100%;
     padding: 10px;
     text-align: center;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    background: #0a0a0a;
+    background: #0a0a0a15;
+    backdrop-filter: blur(5px);
 }
 
 .social-links {
@@ -480,6 +500,8 @@ footer {
 /* BOTÃO DE ÁUDIO */
 #audio-control {
     position: fixed;
+    top: 93.75%;
+    left: 96%;
     bottom: 20px;
     right: 20px;
     background: #ff00ff;
@@ -495,6 +517,7 @@ footer {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    transform: translateX(-50%);
 }
 
 #audio-control:hover {
@@ -763,20 +786,33 @@ footer {
     background: #cc0000;
 }
 
-.transitionbar {
-
-    position: absolute;
-    top: 102%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    height: 1.8%;
-    background: linear-gradient(45deg, #00d4ff, #ff00ff);
-}
-
 #imagem-sorteada {
     position: absolute;
     top: 110%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+#support-btn {
+    position: fixed;
+    top: 85%;
+    left: 96%;
+    bottom: 80px; 
+    right: 20px; 
+    background: #00d4ff; 
+    border: none; 
+    border-radius: 50%; 
+    width: 35px; 
+    height: 35px; 
+    cursor: pointer; 
+    z-index: 9999;
+    transform: translateX(-50%);
+}
+
+.like-icon {
+  color: gray; /* cor quando não curtido */
+}
+
+.liked .like-icon {
+  color: red; /* cor quando curtido */
 }

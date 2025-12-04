@@ -74,3 +74,57 @@ function registerProduct() {
         location.reload();
     }
 }
+
+
+
+
+// ====== COMANDO MANUAL: ATUALIZAR TOP 10 ======
+function updateTop10Manually() {
+    const currentPage = window.location.pathname.split('/').pop();
+    if (!currentPage || currentPage === 'index.html' || currentPage === 'login.html') {
+        alert('Este comando só funciona em páginas de produtos (ex: adesivos.html, cortelaser.html, etc.)');
+        return;
+    }
+
+    const products = JSON.parse(localStorage.getItem(`products_${currentPage}`) || '[]');
+
+    // Produtos padrão (caso existam)
+    const defaultProducts = Array.from(document.querySelectorAll('.prod1')).map((prod, index) => ({
+        id: `default_${currentPage}_${index}`,
+        image: prod.querySelector('img')?.src || '',
+        name: prod.querySelector('h3')?.textContent || 'Produto',
+        description: prod.querySelector('h4')?.textContent || 'Descrição',
+        page: currentPage,
+        likes: getProductLikes(`default_${currentPage}_${index}`),
+        isDefault: true
+    }));
+
+    const allProducts = [...products, ...defaultProducts];
+    allProducts.sort((a, b) => b.likes - a.likes);
+    const top10 = allProducts.slice(0, 10);
+
+    const carousel = document.getElementById('carousel');
+    if (!carousel) {
+        alert('Carrossel não encontrado nesta página.');
+        return;
+    }
+
+    carousel.innerHTML = '';
+    top10.forEach((product, index) => {
+        const slide = document.createElement('div');
+        slide.className = 'slide';
+        slide.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <div class="slide-text">
+                <h2>${product.name}</h2>
+                <p>${product.description}</p>
+                <p style="color: #ff00ff; margin-top: 10px;">❤️ ${product.likes} curtidas</p>
+            </div>
+        `;
+        carousel.appendChild(slide);
+    });
+
+    initCarousel();
+    localStorage.setItem(`carousel_update_${currentPage}`, new Date().toDateString());
+    alert('✅ Top 10 atualizado com sucesso!');
+}

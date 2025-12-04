@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AS INFORMATICA</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./style.css">
+    <script src="./auth.js" defer></script>
+    <script src="./products.js" defer></script>
+    <script src="./script.js" defer></script>
+    <script src="./admin.js" defer></script>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="./index.html" class="logo">AS INFORMATICA</a>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="./setores.html">Setores</a></li>
+                <li><a href="./contato.html">Contato</a></li>
+                <li><a href="./favoritos.html">Favoritos</a></li>
+                <li><a href="#" id="admin-btn" style="display: none;">ADMIN</a></li>
+                <li><a href="#" id="logout-btn">SAIR</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <video class="hero-videoset" autoplay muted loop>
+            <source src="https://cdn.pixabay.com/video/2019/08/13/26011-353916142_large.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>AS INFORMATICA</h1>
+            <p>Explore o futuro do design digital</p>
+            <a href="#products" class="cta-button">VER COLEÇÃO</a>
+        </div>
+    </section>
+
+<!-- IMAGEM SORTEADA -->
+<img id="imagem-sorteada" src="192x192.png" alt="Sorteio" style="display:none; max-width:3%;">
+
+    <section class="products" id="products">
+        <h2 class="section-title">DESCUBRA</h2>
+        <div class="product-grid" id="random-products-grid">
+            <!-- Os product-cards serão gerados aqui dinamicamente -->
+        </div>
+    </section>
+
+    <section class="designers" id="designers">
+        <div class="designers-container">
+            <h2 class="section-title">Nossos Setores</h2>
+            <div class="designer-grid">
+                <a href="./cortelaser.html" class="designer-card">
+                    <img src="mdf laser.jpg" alt="Corte a Laser" class="designer-avatar">
+                    <h3>Corte a Laser</h3>
+                    <p>MDF e Acrilico</p>
+                </a>
+                <a href="./placasfachadas.html" class="designer-card">
+                    <img src="placapvccomcoberturadeacm.png" alt="Placas" class="designer-avatar">
+                    <h3>Placas e Fachadas</h3>
+                    <p>ACMs e PVC</p>
+                </a>
+                <a href="./adesivos.html" class="designer-card">
+                    <img src="ADESIVOs.png" alt="Adesivos" class="designer-avatar">
+                    <h3>Adesivos</h3>
+                    <p>impressão e adesivação</p>
+                </a>
+                <a href="./toldos.html" class="designer-card">
+                    <img src="toldos.png" alt="Toldos" class="designer-avatar">
+                    <h3>Toldos</h3>
+                    <p>Lona e Policarbonato</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <p>&copy; 2025 AS INFORMATICA. Todos os direitos reservados.</p>
+    </footer>
+
+    <audio id="meuAudio" autoplay>
+        <source src="rainy-lofi-city-lofi-music-332746.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="audio-control" title="Controlar áudio">
+        <svg id="icon-play" class="icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg id="icon-pause" class="icon hidden" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>
+    </button>
+
+<!-- BOTÃO SUPORTE -->
+<button id="support-btn" title="Suporte">
+    <span style="font-size: 15px;">💬</span>
+</button>
+
+<!-- MODAL SUPORTE -->
+<div id="support-modal" style="display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); align-items: center; justify-content: center;">
+    <div style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); padding: 30px; border: 1px solid rgba(0, 212, 255, 0.5); border-radius: 15px; max-width: 400px; text-align: center;">
+        <span id="close-support" style="color: #ff00ff; float: right; font-size: 28px; cursor: pointer;">&times;</span>
+        <h3 style="color: #00d4ff; margin-bottom: 20px;">Suporte</h3>
+        <img src="whattsappQR.png" alt="QR WhatsApp" style="width: 200px; margin: 20px auto; border-radius: 10px; border: 0px solid #00d4ff;" onerror="this.src='https://via.placeholder.com/200x200?text=QR+Code'">
+        <p style="color: #fff;">Entre em contato com o suporte<br>
+        <strong style="color: #ff00ff;">[Não possuímos um chat específico para o suporte, no entanto use o de placas e fachadas]</strong></p>
+    </div>
+</div>
+
+<!-- SCRIPT SUPORTE -->
+<script>
+    const supportBtn = document.getElementById('support-btn');
+    const supportModal = document.getElementById('support-modal');
+    const closeSupport = document.getElementById('close-support');
+
+    supportBtn.onclick = () => supportModal.style.display = 'flex';
+    closeSupport.onclick = () => supportModal.style.display = 'none';
+    supportModal.onclick = (e) => {
+        if (e.target === supportModal) supportModal.style.display = 'none';
+    };
+</script>
+
+<script>
+// Função para obter todos os produtos de todas as páginas
+function getAllProductsFromAllPages() {
+    const allProducts = [];
+    const pages = ['cortelaser.html', 'adesivos.html', 'toldos.html', 'placasfachadas.html'];
+    
+    pages.forEach(page => {
+        // Produtos do admin
+        const adminProducts = JSON.parse(localStorage.getItem(`products_${page}`) || '[]');
+        
+        // Produtos padrão
+        const defaultProductsHTML = getDefaultProductsHTML(page);
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = defaultProductsHTML;
+        const defaultProds = tempDiv.querySelectorAll('.prod1');
+        
+        const defaultProducts = Array.from(defaultProds).map((prod, index) => ({
+            id: `default_${page}_${index}`,
+            image: prod.querySelector('img')?.src || '',
+            name: prod.querySelector('h3')?.textContent || 'Produto',
+            description: prod.querySelector('h4')?.textContent || 'Descrição',
+            page: page,
+            likes: getProductLikes(`default_${page}_${index}`),
+            isDefault: true
+        }));
+        
+        allProducts.push(...adminProducts, ...defaultProducts);
+    });
+    
+    return allProducts;
+}
+
+// Função para embaralhar array
+function shuffleArray(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+}
+
+// Função para renderizar produtos aleatórios
+function renderRandomProducts() {
+    const container = document.getElementById('random-products-grid');
+    if (!container) return;
+    
+    const allProducts = getAllProductsFromAllPages();
+    const shuffledProducts = shuffleArray(allProducts);
+    const randomProducts = shuffledProducts.slice(0, 4);
+    
+    container.innerHTML = '';
+    
+    randomProducts.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        productCard.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" class="product-image">
+            <div class="product-info">
+                <h3 class="product-title">${product.name}</h3>
+                <p class="product-description">${product.description}</p>
+                <p class="product-page">De: ${product.page.replace('.html', '')}</p>
+            </div>
+        `;
+        container.appendChild(productCard);
+    });
+}
+
+// Executar quando a página carregar
+document.addEventListener('DOMContentLoaded', function() {
+    renderRandomProducts();
+});
+
+// Também executar quando a página for atualizada (F5)
+window.addEventListener('load', function() {
+    renderRandomProducts();
+});
+</script>
+</body>
+</html>

@@ -12,6 +12,12 @@
     <script src="./admin.js" defer></script>
 </head>
 <body>
+        <video class="hero-videoset" autoplay muted loop>
+            <source src="https://cdn.pixabay.com/video/2019/08/13/26011-353916142_large.mp4" type="video/mp4">
+        </video>
+
+        <div class="filtro"></div>
+
     <nav id="navbar">
         <div class="nav-container">
             <a href="./index.html" class="logo">AS INFORMATICA</a>
@@ -29,7 +35,7 @@
 
     <section class="hero" id="home">
         <video class="hero-video" autoplay muted loop>
-            <source src="https://media.istockphoto.com/id/1154642294/pt/vídeo/industrial-printing-device-at-workshop-view.mp4?s=mp4-640x640-is&k=20&c=_ZVPT9ozR_3jPR0QU912mqswppqw1B4G97FcsKTD7jM=" type="video/mp4">
+            <source src="https://cdn.pixabay.com/video/2025/09/19/305027_large.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -96,13 +102,7 @@
     </section>
 
     <footer id="contact">
-        <p>&copy; 2025 AS INFORMATICA. Todos os direitos reservados.</p>
-        <div class="social-links">
-            <a href="#">📧</a>
-            <a href="#">📷</a>
-            <a href="#">🐦</a>
-            <a href="#">▶️</a>
-        </div>
+        <p>AS INFORMATICA &copy; 2015-2026</p>
     </footer>
 
     <audio id="meuAudio" autoplay loop>
@@ -114,7 +114,7 @@
         <svg id="icon-pause" class="icon hidden" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>
     </button>
 <!-- BOTÃO SUPORTE -->
-<button id="support-btn" title="Suporte" style="position: fixed; bottom: 80px; right: 20px; background: #00ff00; border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; z-index: 9999;">
+<button id="support-btn" title="Suporte">
     <span style="font-size: 24px;">💬</span>
 </button>
 
@@ -141,6 +141,8 @@
         if (e.target === supportModal) supportModal.style.display = 'none';
     };
 </script>
+
+<span class="like-icon">🤍</span>
 
 </body>
 </html>

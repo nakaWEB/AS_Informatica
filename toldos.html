@@ -12,14 +12,21 @@
     <script src="./admin.js" defer></script>
 </head>
 <body>
+        <video class="hero-videoset" autoplay muted loop>
+            <source src="https://cdn.pixabay.com/video/2019/08/13/26011-353916142_large.mp4" type="video/mp4">
+        </video>
+
+        <div class="filtro"></div>
+
     <nav id="navbar">
         <div class="nav-container">
             <a href="./index.html" class="logo">AS INFORMATICA</a>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
+                <li><a href="./setores.html">Setores</a></li>
                 <li><a href="#products">Destaques</a></li>
                 <li><a href="#containerprodutos">Produtos</a></li>
-                <li><a href="#contact">Contato</a></li>
+                <li><a href="./contato.html">Contato</a></li>
                 <li><a href="./favoritos.html">Favoritos</a></li>
                 <li><a href="#" id="admin-btn" style="display: none;">ADMIN</a></li>
                 <li><a href="#" id="logout-btn">SAIR</a></li>
@@ -96,13 +103,7 @@
     </section>
 
     <footer id="contact">
-        <p>&copy; 2025 AS INFORMATICA. Todos os direitos reservados.</p>
-        <div class="social-links">
-            <a href="#">📧</a>
-            <a href="#">📷</a>
-            <a href="#">🐦</a>
-            <a href="#">▶️</a>
-        </div>
+        <p>AS INFORMATICA &copy; 2015-2026</p>
     </footer>
 
     <audio id="meuAudio" autoplay loop>
@@ -114,7 +115,7 @@
         <svg id="icon-pause" class="icon hidden" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>
     </button>
 <!-- BOTÃO SUPORTE -->
-<button id="support-btn" title="Suporte" style="position: fixed; bottom: 80px; right: 20px; background: #00ff00; border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; z-index: 9999;">
+<button id="support-btn" title="Suporte">
     <span style="font-size: 24px;">💬</span>
 </button>
 
@@ -123,7 +124,7 @@
     <div style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); padding: 30px; border: 1px solid rgba(0, 212, 255, 0.5); border-radius: 15px; max-width: 400px; text-align: center;">
         <span id="close-support" style="color: #ff00ff; float: right; font-size: 28px; cursor: pointer;">&times;</span>
         <h3 style="color: #00d4ff; margin-bottom: 20px;">Suporte</h3>
-        <img src="./whattsappQR.png" alt="QR WhatsApp" style="width: 200px; margin: 20px auto; border-radius: 10px; border: 2px solid #00d4ff;" onerror="this.src='https://via.placeholder.com/200x200?text=QR+Code'">
+        <img src="./imgs-mp4s/whattsappQR.png" alt="QR WhatsApp" style="width: 200px; margin: 20px auto; border-radius: 10px; border: 2px solid #00d4ff;" onerror="this.src='https://via.placeholder.com/200x200?text=QR+Code'">
         <p style="color: #fff;">Entre em contato com o suporte<br>
         <strong style="color: #ff00ff;">[Não possuímos um chat específico para o suporte, no entanto use o de placas e fachadas]</strong></p>
     </div>
@@ -141,6 +142,8 @@
         if (e.target === supportModal) supportModal.style.display = 'none';
     };
 </script>
+
+<span class="like-icon">🤍</span>
 
 </body>
 </html>

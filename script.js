@@ -134,3 +134,9 @@
         document.getElementById('imagem-sorteada').style.display = 'block';
     }
 })();
+
+/* Scroll suave para o topo quando o link “Home” for clicado */
+document.getElementById('link-home').addEventListener('click', function(e) {
+  e.preventDefault();                   // evita o “#” na URL
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
