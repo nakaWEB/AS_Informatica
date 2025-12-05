@@ -149,6 +149,7 @@ nav.scrolled {
 nav.scrolled ~ .hero {
     opacity: 0%;
     transition: opacity 0.4s ease;
+    z-index: -1;
 }
 
 
@@ -377,6 +378,7 @@ nav.scrolled ~ .hero {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 3%;
+    align-items: center;
 }
 
 .containerprodutos .prod1 {
@@ -387,6 +389,7 @@ nav.scrolled ~ .hero {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     align-items: center;
+    transition: transform 0.3s ease-in-out;
     
 }
 
@@ -411,6 +414,11 @@ nav.scrolled ~ .hero {
     color: #0a0a0a;
     text-align: center;
 
+}
+
+.prod1:hover {
+transform: scale(1.5);
+    z-index: 11000;
 }
 
 /* SEÇÃO DE PRODUTOS - VERSÃO 2 */
@@ -876,6 +884,15 @@ footer {
     height: 6%;
     position: absolute;
     top: 210%;
+    left: 0px;
+    background: #ff000000;
+}
+
+.barraacmap {
+    width: 100%;
+    height: 6%;
+    position: absolute;
+    top: 325%;
     left: 0px;
     background: #ff000000;
 }
