@@ -45,7 +45,7 @@ function loadProductsFromPage(pageName) {
         actionsDiv.className = 'product-actions-outside';
         actionsDiv.innerHTML = `
             <button class="like-btn ${hasLiked ? 'liked' : ''}" data-product-id="${product.id}" title="Curtir">
-                <span class="like-icon">${hasLiked ? '❤️' : '🤍'}</span>
+                <span class="like-icon">${hasLiked ? '❤︎' : '♡'}</span>
                 <span class="like-count">${getProductLikes(product.id)}</span>
             </button>
             <button class="favorite-btn ${isFavorited ? 'favorited' : ''}" data-product-id="${product.id}" title="Favoritar">
@@ -375,7 +375,7 @@ function addProductEventListeners() {
             const liked = toggleLike(productId);
 
             this.classList.toggle('liked');
-            this.querySelector('.like-icon').textContent = liked ? '❤️' : '🤍';
+            this.querySelector('.like-icon').textContent = liked ? '❤︎' : '♡︎';
             this.querySelector('.like-count').textContent = getProductLikes(productId);
         });
     });
@@ -414,29 +414,25 @@ function updateCarouselWithTopProducts() {
     allProducts.sort((a, b) => b.likes - a.likes);
     const top10 = allProducts.slice(0, 10);
 
-    const lastUpdate = localStorage.getItem(`carousel_update_${currentPage}`);
-    const today = new Date().toDateString();
-
-    if (lastUpdate !== today && new Date().getHours() >= 12) {
-        const carousel = document.getElementById('carousel');
-        if (carousel) {
-            carousel.innerHTML = '';
-            top10.forEach((product, index) => {
-                const slide = document.createElement('div');
-                slide.className = 'slide';
-                slide.innerHTML = `
-                    <img src="${product.image}" alt="${product.name}">
-                    <div class="slide-text">
-                        <h2>${product.name}</h2>
-                        <p>${product.description}</p>
-                        <p style="color: #ff00ff; margin-top: 10px;">❤️ ${product.likes} curtidas</p>
-                    </div>
-                `;
-                carousel.appendChild(slide);
-            });
-            initCarousel();
-            localStorage.setItem(`carousel_update_${currentPage}`, today);
-        }
+    // Remova a verificação de data/hora e sempre atualize
+    const carousel = document.getElementById('carousel');
+    if (carousel) {
+        carousel.innerHTML = '';
+        top10.forEach((product, index) => {
+            const slide = document.createElement('div');
+            slide.className = 'slide';
+            slide.innerHTML = `
+                <img src="${product.image}" alt="${product.name}">
+                <div class="slide-text">
+                    <h2>${product.name}</h2>
+                    <p>${product.description}</p>
+                    <p style="color: #ff00ff; margin-top: 10px;">❤️ ${product.likes} curtidas</p>
+                </div>
+            `;
+            carousel.appendChild(slide);
+        });
+        initCarousel();
+        localStorage.setItem(`carousel_update_${currentPage}`, new Date().toDateString());
     }
 }
 
@@ -509,4 +505,19 @@ document.addEventListener('DOMContentLoaded', function () {
         scheduleDailyUpdate();
     }
     initCarousel();
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    if (currentPage !== 'index.html' && currentPage !== 'login.html' && currentPage !== 'favoritos.html') {
+        loadProductsFromPage(currentPage);
+        
+        // Forçar atualização do carrossel
+        setTimeout(() => {
+            updateCarouselWithTopProducts();
+        }, 500);
+        
+        scheduleDailyUpdate();
+    }
+    initCarousel(); // Sempre inicializar o carrossel
 });
