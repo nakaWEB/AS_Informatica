@@ -390,7 +390,6 @@ nav.scrolled ~ .hero {
     -webkit-backdrop-filter: blur(10px);
     align-items: center;
     transition: transform 0.3s ease-in-out;
-    
 }
 
 .containerprodutos .prod1 img {
@@ -500,6 +499,32 @@ transform: scale(1.5);
 .designer-card {
     text-align: center;
     transition: transform 0.3s;
+}
+
+.designer-card img {
+    text-align: center;
+    transition: transform 0.3s;
+      aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.designer-card h3{
+color: #ebebeb;
+}
+
+.designer-card p{
+color: #c9c9c9;
+}
+
+.designer-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #00d4ff;
+    transition: width 0.3s;
 }
 
 .designer-card:hover {
